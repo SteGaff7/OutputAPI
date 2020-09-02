@@ -1,0 +1,52 @@
+{
+    "athlete": {
+        "1": {
+            "firstName": "Baker",
+            "lastName": "Mayfield",
+            "weight": 100,
+            "height": 1.82
+        },
+        "2": {
+            "firstName": "Nick",
+            "lastName": "Chubb",
+            "weight": 70,
+            "height": 1.69
+        },
+        "3": {
+            "firstName": "Aaron",
+            "lastName": "Rodgers",
+            "weight": 100,
+            "height": 1.82
+        },
+        "4": {
+            "firstName": "Bruce",
+            "lastName": "Allen",
+            "weight": 100,
+            "height": 1.82
+        },
+        "5": {
+            "firstName": "Tom",
+            "lastName": "Brady",
+            "weight": 100,
+            "height": 1.82
+        },
+        "6": {
+            "firstName": "Jordy",
+            "lastName": "Nelson",
+            "weight": 89,
+            "height": 1.96
+        },
+        "7": {
+            "firstName": "Drew",
+            "lastName": "Brees",
+            "weight": 89,
+            "height": 1.96
+        },
+        "8": {
+            "firstName": "Travis",
+            "lastName": "Kelce",
+            "weight": 89,
+            "height": 1.96
+        }
+    }
+}

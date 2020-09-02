@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <script src="{% static 'app.js' %}"></script>
+</head>
+<body>
+    <div id="searchDiv">
+        <div style="height: 50px">
+            <button type="button" onclick="callApi(false)">
+                Search for all athletes
+            </button>
+        </div>
+
+
+        <div style="height: 50px">
+            <button type="button" onclick="callApi(true)">
+                Search for athlete by ID:
+            </button>
+            <input id="id" type="number" value="1" style="width: 50px">
+        </div>
+
+    </div>
+
+    <div id="resultDiv">
+
+    </div>
+</body>
+</html>
