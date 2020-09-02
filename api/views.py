@@ -70,7 +70,7 @@ class ListAthletesView(generics.ListAPIView):
                 return Response("Invalid ID", status=400)
         # If no ID specified then return all athletes
         elif len(request.GET.keys()) == 0:
-            return JsonResponse(json_data, safe=True, status=200)
+            return Response(json_data, status=200)
         else:
             return HttpResponseBadRequest("Invalid Parameters")
 
