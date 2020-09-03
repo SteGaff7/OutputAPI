@@ -14,8 +14,6 @@ function callApi(ID) {
     request.send();
 
     request.onload = function () {
-
-
         if (request.status == 200) {
 
         // Begin accessing JSON data here
@@ -40,8 +38,8 @@ function callApi(ID) {
              }
 
              table += "</table>";
-
              document.getElementById("resultDiv").innerHTML = table;
+
         } else if (request.status == 400 || request.status == 404) {
             document.getElementById("resultDiv").innerHTML = "Error - Bad Request";
             console.log('Error - Bad Request');
