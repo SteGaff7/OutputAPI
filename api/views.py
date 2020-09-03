@@ -9,11 +9,15 @@ import os
 
 
 class Athletes(APIView):
-    """ API Endpoint for other applications """
+    """
+    API Endpoint for other applications
+    Handles GET requests only
+    Valid querystring parameters are: 'id'
+    """
 
     def get(self, request):
 
-        # Open and read json file
+        # Open and read json file in place of database
         json_file = open(os.path.join(settings.BASE_DIR, 'static/players.json'))
         json_data = json.load(json_file)
         json_file.close()
@@ -26,7 +30,7 @@ class Athletes(APIView):
 
             for ID in request.GET.getlist("id"):
                 if 0 < int(ID) <= num_athletes:
-                    # Append to results
+                    # Append athlete to results dict
                     result["athlete"][ID] = json_data["athlete"][ID]
 
             # If at least 1 result
@@ -37,17 +41,22 @@ class Athletes(APIView):
         # If no ID specified then return all athletes
         elif len(request.GET.keys()) == 0:
             return JsonResponse(json_data, safe=True, status=200)
-        # If other parameters specified then return error message
+        # If other parameters & no ID specified then return error message
         else:
             return HttpResponseBadRequest("Invalid Parameters")
 
 
 class ListAthletesView(generics.ListAPIView):
-    """ User friendly - Django Rest Framework API list view """
+    """
+    User friendly - Django Rest Framework API list view
+    Duplicate of above class using the ListAPIView
+    Handles GET requests only
+    Valid querystring parameters are: 'id'
+    """
 
     def get(self, request):
 
-        # Open and read json file
+        # Open and read json file in place of database
         json_file = open(os.path.join(settings.BASE_DIR, 'static/players.json'))
         json_data = json.load(json_file)
         json_file.close()
@@ -60,7 +69,7 @@ class ListAthletesView(generics.ListAPIView):
 
             for ID in request.GET.getlist("id"):
                 if 0 < int(ID) <= num_athletes:
-                    # Append to results
+                    # Append athlete to results dict
                     result["athlete"][ID] = json_data["athlete"][ID]
 
             # If at least 1 result
@@ -76,4 +85,7 @@ class ListAthletesView(generics.ListAPIView):
 
 
 def index(request):
+    """
+    Very simple webpage provided for an easy way to interact with API
+    """
     return render(request, "index.html")

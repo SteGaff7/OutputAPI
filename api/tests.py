@@ -1,4 +1,3 @@
-from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -6,6 +5,10 @@ from rest_framework.utils import json
 
 
 class APIEndpointGetAllAthletes(APITestCase):
+    """
+    Test API Endpoint with queries for "all athletes"
+    """
+
     def testResponseCodeSuccess(self):
         """
         """
@@ -50,6 +53,10 @@ class APIEndpointGetAllAthletes(APITestCase):
 
 
 class APIEndpointGetAthleteByID(APITestCase):
+    """
+    Test API Endpoint with queries for "athlete by ID"
+    """
+
     def testResponseCodeSingleIDSuccess(self):
         """
         """
@@ -115,11 +122,33 @@ class APIEndpointGetAthleteByID(APITestCase):
 
 
 class BadPaths(APITestCase):
-    def testBadPath(self):
+    """
+    Negative testing of API with "bad paths"
+    """
+
+    def testBadPathString(self):
         """
         """
 
         url = "/athlete/bad"
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def testBadPathNumber(self):
+        """
+        """
+
+        url = "/athlete/2"
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def testBadPathQueryset(self):
+        """
+        """
+
+        url = "/athlete/id=2"
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -156,6 +185,10 @@ class BadPaths(APITestCase):
 
 
 class APIListViewGet(APITestCase):
+    """
+    Test API ListView
+    """
+
     def testGetAll(self):
         """
         """
@@ -184,6 +217,10 @@ class APIListViewGet(APITestCase):
 
 
 class WebPage(APITestCase):
+    """
+    Test Webpage that interacts with API
+    """
+
     def testStatusCode(self):
         """
         """
