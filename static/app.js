@@ -15,13 +15,11 @@ function callApi(ID) {
 
     request.onload = function () {
 
-        console.log(this.response);
+
+        if (request.status == 200) {
 
         // Begin accessing JSON data here
         var data = JSON.parse(this.response);
-
-
-        if (request.status == 200) {
 
             var table = "<table><tr>" +
                         "<th>First Name</th>" +
@@ -38,14 +36,13 @@ function callApi(ID) {
                             "<td>" + data[result][id]["weight"] + "</td>" +
                             "<td>" + data[result][id]["height"] + "</td>" +
                             "</tr>";
-                    console.log(data[result][id]["firstName"]);
                 }
              }
 
              table += "</table>";
 
              document.getElementById("resultDiv").innerHTML = table;
-        } else {
+        } else if (request.status == 400 || request.status == 404) {
             document.getElementById("resultDiv").innerHTML = "Error - Bad Request";
             console.log('Error - Bad Request');
         }
